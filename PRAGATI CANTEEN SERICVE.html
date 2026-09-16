@@ -1,0 +1,4031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAGATI UNIVERSITY CANTEEN SERVICE</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #8b1e3f;
+    --secondary: #f59e0b;
+    --dark: #1f2937;
+    --light: #fff7ed;
+    --green: #16a34a;
+    --red: #dc2626;
+    --gray: #6b7280;
+    --border: #e5e7eb;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: var(--dark);
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* LOGIN */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background:
+        linear-gradient(135deg, rgba(139,30,63,.96), rgba(245,158,11,.88));
+}
+
+.login-card {
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 25px 70px rgba(0,0,0,.25);
+    text-align: center;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    border-radius: 22px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.login-card h1 {
+    font-size: 25px;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.login-card h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    color: var(--gray);
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.food-illustration {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.form-control {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 13px;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+}
+
+.primary-btn {
+    width: 100%;
+    border: none;
+    background: var(--primary);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.primary-btn:hover {
+    opacity: .9;
+}
+
+.secondary-btn {
+    border: 1px solid var(--primary);
+    background: white;
+    color: var(--primary);
+    padding: 11px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.error {
+    color: var(--red);
+    font-size: 13px;
+    margin: 8px 0;
+}
+
+/* APP */
+
+#app {
+    min-height: 100vh;
+}
+
+.topbar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.topbar-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.brand small {
+    display: block;
+    color: var(--gray);
+    font-size: 11px;
+}
+
+.top-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    border: none;
+    background: #fff7ed;
+    padding: 10px 13px;
+    border-radius: 10px;
+}
+
+.cart-badge {
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 11px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px 20px 100px;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #fff1f2, #fff7ed);
+    border-radius: 24px;
+    padding: 28px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero h1 {
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.hero p {
+    color: var(--gray);
+}
+
+.hero-food {
+    font-size: 75px;
+}
+
+/* SEARCH */
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+}
+
+/* SECTION */
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-title h2 {
+    font-size: 22px;
+}
+
+.category-bar {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin-bottom: 18px;
+    padding-bottom: 5px;
+}
+
+.category {
+    white-space: nowrap;
+    padding: 9px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: white;
+}
+
+.category.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* FOOD CARDS */
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.food-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.04);
+}
+
+.food-image {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff7ed;
+    border-radius: 14px;
+    font-size: 55px;
+    margin-bottom: 12px;
+}
+
+.food-card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.food-card p {
+    font-size: 12px;
+    color: var(--gray);
+    min-height: 30px;
+}
+
+.food-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.price {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.add-btn {
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 9px;
+    padding: 8px 12px;
+}
+
+.out {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* CAKE */
+
+.cake-banner {
+    background: linear-gradient(135deg,#fdf2f8,#fff7ed);
+    border-radius: 22px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cake-banner .cake-icon {
+    font-size: 65px;
+}
+
+/* CART */
+
+.cart-item {
+    background: white;
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.qty button {
+    border: 1px solid var(--border);
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.remove-btn {
+    border: none;
+    color: var(--red);
+    background: none;
+}
+
+.bill {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.bill-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+}
+
+.total {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* PAGES */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.back-btn {
+    border: none;
+    background: transparent;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+/* WEEKLY */
+
+.day-card {
+    background: white;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.day-card.today {
+    border: 2px solid var(--secondary);
+    background: #fffaf0;
+}
+
+.day-card h3 {
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.day-section {
+    margin: 10px 0;
+}
+
+.day-section strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.day-section span {
+    display: inline-block;
+    background: #f3f4f6;
+    padding: 6px 9px;
+    margin: 3px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* CAKE FORM */
+
+.cake-layout {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    gap: 20px;
+}
+
+.panel {
+    background: white;
+    padding: 22px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.notice {
+    background: #fff7ed;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    color: #9a3412;
+    font-size: 13px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+/* PAYMENT */
+
+.payment-option {
+    border: 2px solid var(--border);
+    padding: 15px;
+    border-radius: 14px;
+    margin: 10px 0;
+}
+
+.payment-option.selected {
+    border-color: var(--primary);
+    background: #fff7ed;
+}
+
+.payment-option input {
+    margin-right: 8px;
+}
+
+/* TOKEN */
+
+.token-card {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    background: white;
+    border-radius: 25px;
+    padding: 35px;
+    border: 1px solid var(--border);
+}
+
+.token {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--primary);
+    margin: 15px 0;
+}
+
+.success {
+    color: var(--green);
+    font-weight: bold;
+}
+
+/* STATUS */
+
+.timeline {
+    margin: 25px 0;
+}
+
+.status-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px;
+    margin: 5px 0;
+    border-radius: 12px;
+}
+
+.status-step.completed {
+    background: #f0fdf4;
+    color: var(--green);
+}
+
+.status-step.current {
+    background: #fff7ed;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.status-step.pending {
+    background: #f9fafb;
+    color: #9ca3af;
+}
+
+/* ORDERS */
+
+.order-card {
+    background: white;
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+}
+
+.status-badge {
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #fff7ed;
+    color: #92400e;
+    font-size: 12px;
+}
+
+/* ADMIN */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+}
+
+.stat small {
+    color: var(--gray);
+}
+
+.stat h2 {
+    color: var(--primary);
+    margin-top: 8px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    font-size: 13px;
+}
+
+.admin-table th {
+    background: #fff7ed;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.small-btn {
+    border: none;
+    padding: 7px 9px;
+    border-radius: 7px;
+    background: var(--primary);
+    color: white;
+    font-size: 11px;
+}
+
+/* NAV */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    z-index: 30;
+}
+
+.bottom-nav button {
+    flex: 1;
+    max-width: 180px;
+    border: none;
+    background: white;
+    padding: 12px 5px;
+    color: var(--gray);
+}
+
+.bottom-nav button.active {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    background: var(--dark);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    z-index: 100;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+    .food-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .cake-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .topbar-inner {
+        padding: 12px;
+    }
+
+    .container {
+        padding: 18px 12px 90px;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .hero-food {
+        font-size: 50px;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .food-card {
+        padding: 10px;
+    }
+
+    .food-image {
+        height: 80px;
+        font-size: 42px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .cake-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media(max-width: 400px) {
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .login-card {
+        padding: 25px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<section id="loginPage">
+
+    <div class="login-card">
+
+        <div class="logo">PU</div>
+
+        <div class="food-illustration">🍛🥤</div>
+
+        <h1>PRAGATI UNIVERSITY</h1>
+        <h2>CANTEEN SERVICE</h2>
+
+        <p class="tagline">"Order Ahead. Skip the Queue."</p>
+
+        <div class="form-group">
+            <label>ENTER ROLL NUMBER</label>
+            <input
+                id="rollInput"
+                class="form-control"
+                placeholder="Example: 23A91A0501"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>ENTER MOBILE NUMBER</label>
+            <input
+                id="mobileInput"
+                class="form-control"
+                placeholder="10-digit mobile number"
+                maxlength="10"
+                inputmode="numeric"
+            >
+        </div>
+
+        <div id="loginError" class="error"></div>
+
+        <button class="primary-btn" onclick="login()">
+            CONTINUE
+        </button>
+
+        <p style="margin-top:18px;font-size:12px;color:#777;">
+            Prototype Login • No OTP Required
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- APPLICATION -->
+
+<div id="app" class="hidden">
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <div class="brand">
+            PRAGATI UNIVERSITY
+            <small>CANTEEN SERVICE</small>
+        </div>
+
+        <div class="top-actions">
+
+            <button class="icon-btn" onclick="showPage('cart')">
+                🛒
+                <span id="cartCount" class="cart-badge">0</span>
+            </button>
+
+            <button class="icon-btn" onclick="showPage('profile')">
+                👤
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div>
+            <h1 id="welcomeText">Welcome!</h1>
+            <p>What would you like to eat today?</p>
+            <p style="margin-top:8px;">
+                Order ahead and skip the queue at the canteen.
+            </p>
+        </div>
+
+        <div class="hero-food">
+            🍱
+        </div>
+
+    </div>
+
+    <div class="search-box">
+        <input
+            id="searchInput"
+            class="form-control"
+            placeholder="🔍 Search food items..."
+            oninput="renderFood()"
+        >
+
+        <button class="secondary-btn" onclick="clearSearch()">
+            Clear
+        </button>
+    </div>
+
+    <div class="category-bar">
+
+        <button class="category active" onclick="filterCategory('ALL',this)">
+            ALL
+        </button>
+
+        <button class="category" onclick="filterCategory('MORNING TIFFIN',this)">
+            MORNING TIFFIN
+        </button>
+
+        <button class="category" onclick="filterCategory('LUNCH',this)">
+            LUNCH
+        </button>
+
+        <button class="category" onclick="filterCategory('SNACKS',this)">
+            SNACKS
+        </button>
+
+        <button class="category" onclick="filterCategory('BEVERAGES',this)">
+            BEVERAGES
+        </button>
+
+        <button class="category" onclick="showPage('cake')">
+            CAKES
+        </button>
+
+    </div>
+
+    <div class="section">
+
+        <div class="section-title">
+            <h2>Today's Menu</h2>
+
+            <button class="secondary-btn" onclick="showPage('weekly')">
+                VIEW WEEKLY MENU
+            </button>
+        </div>
+
+        <h3 style="margin:15px 0 10px;">🌅 MORNING TIFFIN</h3>
+        <div id="morningGrid" class="food-grid"></div>
+
+        <h3 style="margin:25px 0 10px;">☀️ AFTERNOON LUNCH</h3>
+        <div id="lunchGrid" class="food-grid"></div>
+
+        <h3 style="margin:25px 0 10px;">🍿 SNACKS & BEVERAGES</h3>
+        <div id="snacksGrid" class="food-grid"></div>
+
+    </div>
+
+    <div class="cake-banner">
+
+        <div>
+            <h2>🎂 CAKES & OCCASIONS</h2>
+
+            <p style="margin:8px 0 15px;color:#666;">
+                Celebrate birthdays and special occasions with us.
+            </p>
+
+            <button class="primary-btn" style="width:auto;" onclick="showPage('cake')">
+                ORDER A CAKE
+            </button>
+        </div>
+
+        <div class="cake-icon">🎂</div>
+
+    </div>
+
+</section>
+
+
+<!-- WEEKLY -->
+
+<section id="weekly" class="page">
+
+    <button class="back-btn" onclick="showPage('home')">
+        ← Back to Home
+    </button>
+
+    <h1 style="margin-bottom:8px;">WEEKLY MENU</h1>
+
+    <p style="color:#666;margin-bottom:20px;">
+        Explore the complete PRAGATI UNIVERSITY CANTEEN menu.
+    </p>
+
+    <div id="weeklyMenu"></div>
+
+</section>
+
+
+<!-- CAKE -->
+
+<section id="cake" class="page">
+
+    <button class="back-btn" onclick="showPage('home')">
+        ← Back to Home
+    </button>
+
+    <h1>ORDER A CAKE 🎂</h1>
+
+    <p style="color:#666;margin:8px 0 20px;">
+        Make your special occasion memorable.
+    </p>
+
+    <div class="cake-layout">
+
+        <div class="panel">
+
+            <div class="notice">
+                🎂 <strong>CAKE PRE-ORDER NOTICE</strong><br><br>
+                Cakes require preparation time. Please place your cake order in advance.
+            </div>
+
+            <div class="form-group">
+                <label>NAME OF THE PERSON</label>
+                <input id="cakeName" class="form-control"
+                       placeholder="Enter the name to be written on the cake">
+            </div>
+
+            <div class="form-group">
+                <label>CAKE FLAVOUR</label>
+                <select id="cakeFlavour" class="form-control" onchange="updateCakePrice()">
+                    <option>Chocolate</option>
+                    <option>Black Forest</option>
+                    <option>Red Velvet</option>
+                    <option>Butterscotch</option>
+                    <option>Vanilla</option>
+                    <option>Strawberry</option>
+                    <option>Pineapple</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>CAKE WEIGHT</label>
+                <select id="cakeWeight" class="form-control" onchange="updateCakePrice()">
+                    <option value="500">500 g</option>
+                    <option value="1000">1 kg</option>
+                    <option value="1500">1.5 kg</option>
+                    <option value="2000">2 kg</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>OCCASION</label>
+                <select id="cakeOccasion" class="form-control">
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                    <option>Congratulations</option>
+                    <option>Farewell</option>
+                    <option>Welcome</option>
+                    <option>Celebration</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>CAKE MESSAGE</label>
+                <textarea id="cakeMessage" class="form-control"
+                    placeholder="Example: Happy Birthday Rahul!"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>CAKE DESIGN / THEME</label>
+                <select id="cakeTheme" class="form-control" onchange="updateCakePrice()">
+                    <option>Simple</option>
+                    <option>Birthday Theme</option>
+                    <option>Floral</option>
+                    <option>Chocolate Theme</option>
+                    <option>Cartoon Theme</option>
+                    <option>Celebration Theme</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>REQUIRED DATE</label>
+                <input id="cakeDate" type="date" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>PICKUP TIME</label>
+                <input id="cakeTime" type="time" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>QUANTITY</label>
+                <input id="cakeQuantity" type="number" min="1" value="1"
+                       class="form-control" onchange="updateCakePrice()">
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>CAKE ORDER SUMMARY</h2>
+
+            <div style="margin-top:18px;">
+
+                <div class="summary-line">
+                    <span>Name:</span>
+                    <strong id="summaryName">-</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Flavour:</span>
+                    <strong id="summaryFlavour">Chocolate</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Weight:</span>
+                    <strong id="summaryWeight">500 g</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Occasion:</span>
+                    <strong id="summaryOccasion">Birthday</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Theme:</span>
+                    <strong id="summaryTheme">Simple</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Message:</span>
+                    <strong id="summaryMessage">-</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Date:</span>
+                    <strong id="summaryDate">-</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Pickup:</span>
+                    <strong id="summaryTime">-</strong>
+                </div>
+
+                <hr style="margin:15px 0;border:none;border-top:1px solid #eee;">
+
+                <div class="summary-line">
+                    <span>Estimated Price:</span>
+                    <strong id="cakePrice" style="color:#8b1e3f;font-size:22px;">
+                        ₹350
+                    </strong>
+                </div>
+
+            </div>
+
+            <button class="primary-btn" onclick="addCakeToCart()">
+                ADD CAKE TO CART
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CART -->
+
+<section id="cart" class="page">
+
+    <button class="back-btn" onclick="showPage('home')">
+        ← Continue Shopping
+    </button>
+
+    <h1>YOUR CART 🛒</h1>
+
+    <div id="cartItems" style="margin-top:20px;"></div>
+
+    <div id="cartBill"></div>
+
+</section>
+
+
+<!-- CHECKOUT -->
+
+<section id="checkout" class="page">
+
+    <button class="back-btn" onclick="showPage('cart')">
+        ← Back to Cart
+    </button>
+
+    <h1>CHECKOUT</h1>
+
+    <div class="panel" style="margin-top:20px;">
+
+        <h2>ORDER SUMMARY</h2>
+
+        <div id="checkoutItems" style="margin-top:15px;"></div>
+
+        <div class="bill">
+            <div class="bill-line">
+                <span>Subtotal</span>
+                <span id="checkoutSubtotal"></span>
+            </div>
+
+            <div class="bill-line">
+                <span>Service Charge</span>
+                <span id="checkoutService"></span>
+            </div>
+
+            <div class="bill-line total">
+                <span>TOTAL</span>
+                <span id="checkoutTotal"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="panel" style="margin-top:20px;">
+
+        <h2>SELECT PICKUP TIME</h2>
+
+        <div id="pickupSlots" style="margin-top:15px;"></div>
+
+    </div>
+
+
+    <div class="panel" style="margin-top:20px;">
+
+        <h2>SELECT PAYMENT METHOD</h2>
+
+        <label class="payment-option" id="onlineOption">
+            <input type="radio" name="payment" value="Online Payment"
+                   onchange="selectPayment(this.value)">
+            💳 ONLINE PAYMENT
+        </label>
+
+        <label class="payment-option" id="cashOption">
+            <input type="radio" name="payment" value="Cash on Pickup"
+                   onchange="selectPayment(this.value)">
+            💵 CASH ON PICKUP
+        </label>
+
+        <div id="paymentDetails"></div>
+
+    </div>
+
+</section>
+
+
+<!-- TOKEN -->
+
+<section id="confirmation" class="page">
+
+    <div class="token-card">
+
+        <div style="font-size:55px;">🎉</div>
+
+        <h1>ORDER CONFIRMED</h1>
+
+        <p style="margin-top:10px;color:#666;">
+            Your food order has been successfully placed.
+        </p>
+
+        <p style="margin-top:25px;">YOUR TOKEN NUMBER</p>
+
+        <div id="tokenDisplay" class="token">
+            #A101
+        </div>
+
+        <p>
+            Estimated Pickup:
+            <strong id="confirmPickup"></strong>
+        </p>
+
+        <p style="margin-top:10px;">
+            Total Bill:
+            <strong id="confirmTotal"></strong>
+        </p>
+
+        <p style="margin-top:10px;">
+            Payment:
+            <strong id="confirmPayment"></strong>
+        </p>
+
+        <div id="cakeIncluded" class="success hidden" style="margin-top:15px;">
+            🎂 CAKE ORDER INCLUDED
+        </div>
+
+        <button class="primary-btn" style="margin-top:25px;"
+                onclick="showPage('status')">
+            TRACK MY ORDER
+        </button>
+
+        <button class="secondary-btn" style="margin-top:10px;width:100%;"
+                onclick="showPage('home')">
+            BACK TO HOME
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- STATUS -->
+
+<section id="status" class="page">
+
+    <button class="back-btn" onclick="showPage('orders')">
+        ← My Orders
+    </button>
+
+    <div class="panel">
+
+        <h1>ORDER STATUS</h1>
+
+        <h2 id="statusToken" style="color:#8b1e3f;margin-top:15px;">
+            #A101
+        </h2>
+
+        <p style="margin-top:8px;">
+            Estimated Pickup:
+            <strong id="statusPickup"></strong>
+        </p>
+
+        <div id="statusTimeline" class="timeline"></div>
+
+        <div id="readyMessage" class="notice hidden"
+             style="font-size:15px;text-align:center;">
+            🔔 <strong>YOUR ORDER IS READY!</strong><br><br>
+            Please collect your food from the
+            <strong>PRAGATI UNIVERSITY CANTEEN.</strong>
+        </div>
+
+        <div id="demoControls"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ORDERS -->
+
+<section id="orders" class="page">
+
+    <h1>MY ORDERS 🧾</h1>
+
+    <div id="ordersList" style="margin-top:20px;"></div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+    <h1>PRAGATI UNIVERSITY STUDENT</h1>
+
+    <div class="panel" style="margin-top:20px;">
+
+        <div class="summary-line">
+            <span>Roll Number:</span>
+            <strong id="profileRoll"></strong>
+        </div>
+
+        <div class="summary-line">
+            <span>Mobile Number:</span>
+            <strong id="profileMobile"></strong>
+        </div>
+
+        <button class="primary-btn" onclick="editProfile()">
+            EDIT PROFILE
+        </button>
+
+        <button class="secondary-btn"
+                style="width:100%;margin-top:10px;"
+                onclick="logout()">
+            LOGOUT
+        </button>
+
+        <button class="secondary-btn"
+                style="width:100%;margin-top:10px;"
+                onclick="showPage('admin')">
+            CANTEEN ADMIN
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="page">
+
+    <button class="back-btn" onclick="showPage('profile')">
+        ← Profile
+    </button>
+
+    <h1>CANTEEN ADMIN DASHBOARD</h1>
+
+    <p style="color:#666;margin:8px 0 20px;">
+        PRAGATI UNIVERSITY Canteen Management
+    </p>
+
+    <div class="stats">
+
+        <div class="stat">
+            <small>TODAY'S ORDERS</small>
+            <h2 id="statOrders">0</h2>
+        </div>
+
+        <div class="stat">
+            <small>TOTAL SALES</small>
+            <h2 id="statSales">₹0</h2>
+        </div>
+
+        <div class="stat">
+            <small>PENDING</small>
+            <h2 id="statPending">0</h2>
+        </div>
+
+        <div class="stat">
+            <small>READY</small>
+            <h2 id="statReady">0</h2>
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>ORDER MANAGEMENT</h2>
+
+        <div style="overflow-x:auto;margin-top:15px;">
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Roll No</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="adminOrders"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel" style="margin-top:20px;">
+
+        <h2>MENU MANAGEMENT</h2>
+
+        <div style="margin-top:15px;">
+
+            <input id="adminFoodName"
+                   class="form-control"
+                   placeholder="Food Name">
+
+            <input id="adminFoodPrice"
+                   class="form-control"
+                   style="margin-top:8px;"
+                   type="number"
+                   placeholder="Price">
+
+            <select id="adminFoodCategory"
+                    class="form-control"
+                    style="margin-top:8px;">
+
+                <option>MORNING TIFFIN</option>
+                <option>LUNCH</option>
+                <option>SNACKS</option>
+                <option>BEVERAGES</option>
+
+            </select>
+
+            <button class="primary-btn"
+                    onclick="adminAddItem()">
+                ADD ITEM
+            </button>
+
+        </div>
+
+        <div style="overflow-x:auto;margin-top:20px;">
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="adminMenu"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<nav class="bottom-nav">
+
+    <button onclick="showPage('home')" id="navHome">
+        🏠<br>HOME
+    </button>
+
+    <button onclick="showPage('home')" id="navMenu">
+        📋<br>MENU
+    </button>
+
+    <button onclick="showPage('orders')" id="navOrders">
+        🧾<br>ORDERS
+    </button>
+
+    <button onclick="showPage('profile')" id="navProfile">
+        👤<br>PROFILE
+    </button>
+
+</nav>
+
+</div>
+
+
+<div id="toast" class="toast hidden"></div>
+
+
+<script>
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const defaultFoods = [
+
+    {
+        id: 1,
+        name: "Idly",
+        category: "MORNING TIFFIN",
+        price: 30,
+        emoji: "🍘",
+        desc: "Soft steamed idly with chutney and sambar",
+        available: true
+    },
+
+    {
+        id: 2,
+        name: "Vada",
+        category: "MORNING TIFFIN",
+        price: 25,
+        emoji: "🍩",
+        desc: "Crispy South Indian medu vada",
+        available: true
+    },
+
+    {
+        id: 3,
+        name: "Idly Vada Combo",
+        category: "MORNING TIFFIN",
+        price: 45,
+        emoji: "🍽️",
+        desc: "Idly and vada with sambar",
+        available: true
+    },
+
+    {
+        id: 4,
+        name: "Masala Dosa",
+        category: "MORNING TIFFIN",
+        price: 50,
+        emoji: "🥞",
+        desc: "Crispy dosa filled with potato masala",
+        available: true
+    },
+
+    {
+        id: 5,
+        name: "Plain Dosa",
+        category: "MORNING TIFFIN",
+        price: 40,
+        emoji: "🥞",
+        desc: "Crispy plain dosa with chutney",
+        available: true
+    },
+
+    {
+        id: 6,
+        name: "Poori",
+        category: "MORNING TIFFIN",
+        price: 40,
+        emoji: "🫓",
+        desc: "Fluffy poori served with potato curry",
+        available: true
+    },
+
+    {
+        id: 7,
+        name: "Pongal",
+        category: "MORNING TIFFIN",
+        price: 40,
+        emoji: "🍚",
+        desc: "Traditional South Indian pongal",
+        available: true
+    },
+
+    {
+        id: 8,
+        name: "Upma",
+        category: "MORNING TIFFIN",
+        price: 30,
+        emoji: "🥣",
+        desc: "Fresh vegetable upma",
+        available: true
+    },
+
+    {
+        id: 9,
+        name: "Chapati",
+        category: "MORNING TIFFIN",
+        price: 35,
+        emoji: "🫓",
+        desc: "Soft chapati with curry",
+        available: true
+    },
+
+    {
+        id: 10,
+        name: "Veg Meals",
+        category: "LUNCH",
+        price: 80,
+        emoji: "🍱",
+        desc: "Rice, dal, vegetables, sambar and curd",
+        available: true
+    },
+
+    {
+        id: 11,
+        name: "Special Meals",
+        category: "LUNCH",
+        price: 110,
+        emoji: "🍛",
+        desc: "Special college canteen meal",
+        available: true
+    },
+
+    {
+        id: 12,
+        name: "Chicken Biryani",
+        category: "LUNCH",
+        price: 120,
+        emoji: "🍗",
+        desc: "Aromatic chicken biryani",
+        available: true
+    },
+
+    {
+        id: 13,
+        name: "Veg Biryani",
+        category: "LUNCH",
+        price: 90,
+        emoji: "🍚",
+        desc: "Vegetable biryani with raita",
+        available: true
+    },
+
+    {
+        id: 14,
+        name: "Chicken Fried Rice",
+        category: "LUNCH",
+        price: 110,
+        emoji: "🍚",
+        desc: "Chicken fried rice with vegetables",
+        available: true
+    },
+
+    {
+        id: 15,
+        name: "Veg Fried Rice",
+        category: "LUNCH",
+        price: 85,
+        emoji: "🍚",
+        desc: "Vegetable fried rice",
+        available: true
+    },
+
+    {
+        id: 16,
+        name: "Curd Rice",
+        category: "LUNCH",
+        price: 45,
+        emoji: "🥣",
+        desc: "Cooling curd rice",
+        available: true
+    },
+
+    {
+        id: 17,
+        name: "Sambar Rice",
+        category: "LUNCH",
+        price: 45,
+        emoji: "🍛",
+        desc: "Rice with sambar",
+        available: true
+    },
+
+    {
+        id: 18,
+        name: "Lemon Rice",
+        category: "LUNCH",
+        price: 45,
+        emoji: "🍋",
+        desc: "Tangy lemon rice",
+        available: true
+    },
+
+    {
+        id: 19,
+        name: "Tomato Rice",
+        category: "LUNCH",
+        price: 45,
+        emoji: "🍅",
+        desc: "Spicy tomato rice",
+        available: true
+    },
+
+    {
+        id: 20,
+        name: "Egg Fried Rice",
+        category: "LUNCH",
+        price: 90,
+        emoji: "🍳",
+        desc: "Egg fried rice",
+        available: true
+    },
+
+    {
+        id: 21,
+        name: "Chicken Curry Rice",
+        category: "LUNCH",
+        price: 115,
+        emoji: "🍛",
+        desc: "Chicken curry with steamed rice",
+        available: true
+    },
+
+    {
+        id: 22,
+        name: "Samosa",
+        category: "SNACKS",
+        price: 20,
+        emoji: "🔺",
+        desc: "Crispy vegetable samosa",
+        available: true
+    },
+
+    {
+        id: 23,
+        name: "Veg Puff",
+        category: "SNACKS",
+        price: 25,
+        emoji: "🥐",
+        desc: "Flaky puff filled with vegetables",
+        available: true
+    },
+
+    {
+        id: 24,
+        name: "Egg Puff",
+        category: "SNACKS",
+        price: 35,
+        emoji: "🥐",
+        desc: "Egg-filled bakery puff",
+        available: true
+    },
+
+    {
+        id: 25,
+        name: "Chicken Puff",
+        category: "SNACKS",
+        price: 45,
+        emoji: "🥐",
+        desc: "Chicken-filled puff",
+        available: true
+    },
+
+    {
+        id: 26,
+        name: "Mirchi Bajji",
+        category: "SNACKS",
+        price: 20,
+        emoji: "🌶️",
+        desc: "Crispy chilli bajji",
+        available: true
+    },
+
+    {
+        id: 27,
+        name: "Biscuits",
+        category: "SNACKS",
+        price: 10,
+        emoji: "🍪",
+        desc: "Assorted biscuit packet",
+        available: true
+    },
+
+    {
+        id: 28,
+        name: "Cookies",
+        category: "SNACKS",
+        price: 20,
+        emoji: "🍪",
+        desc: "Fresh cookies",
+        available: true
+    },
+
+    {
+        id: 29,
+        name: "Chocolate",
+        category: "SNACKS",
+        price: 20,
+        emoji: "🍫",
+        desc: "Chocolate bar",
+        available: true
+    },
+
+    {
+        id: 30,
+        name: "Chips",
+        category: "SNACKS",
+        price: 20,
+        emoji: "🥔",
+        desc: "Crispy potato chips",
+        available: true
+    },
+
+    {
+        id: 31,
+        name: "Kurkure Packet",
+        category: "SNACKS",
+        price: 20,
+        emoji: "🌽",
+        desc: "Kurkure snack packet",
+        available: true
+    },
+
+    {
+        id: 32,
+        name: "Soft Drinks",
+        category: "BEVERAGES",
+        price: 40,
+        emoji: "🥤",
+        desc: "Chilled soft drink",
+        available: true
+    },
+
+    {
+        id: 33,
+        name: "Fresh Juice",
+        category: "BEVERAGES",
+        price: 50,
+        emoji: "🧃",
+        desc: "Fresh fruit juice",
+        available: true
+    },
+
+    {
+        id: 34,
+        name: "Tea",
+        category: "BEVERAGES",
+        price: 15,
+        emoji: "☕",
+        desc: "Hot tea",
+        available: true
+    },
+
+    {
+        id: 35,
+        name: "Coffee",
+        category: "BEVERAGES",
+        price: 20,
+        emoji: "☕",
+        desc: "Hot coffee",
+        available: true
+    },
+
+    {
+        id: 36,
+        name: "Water Bottle",
+        category: "BEVERAGES",
+        price: 20,
+        emoji: "💧",
+        desc: "Drinking water bottle",
+        available: true
+    }
+
+];
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function getFoods() {
+    let foods = JSON.parse(localStorage.getItem("puFoods"));
+
+    if (!foods) {
+        localStorage.setItem("puFoods", JSON.stringify(defaultFoods));
+        foods = defaultFoods;
+    }
+
+    return foods;
+}
+
+function saveFoods(foods) {
+    localStorage.setItem("puFoods", JSON.stringify(foods));
+}
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("puCart")) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("puCart", JSON.stringify(cart));
+}
+
+function getOrders() {
+    return JSON.parse(localStorage.getItem("puOrders")) || [];
+}
+
+function saveOrders(orders) {
+    localStorage.setItem("puOrders", JSON.stringify(orders));
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login() {
+
+    const roll = document.getElementById("rollInput").value.trim();
+    const mobile = document.getElementById("mobileInput").value.trim();
+    const error = document.getElementById("loginError");
+
+    error.textContent = "";
+
+    if (!roll) {
+        error.textContent = "Please enter your roll number.";
+        return;
+    }
+
+    if (!/^[6-9]\d{9}$/.test(mobile)) {
+        error.textContent = "Please enter a valid 10-digit mobile number.";
+        return;
+    }
+
+    localStorage.setItem("puStudent", JSON.stringify({
+        roll,
+        mobile
+    }));
+
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("app").classList.remove("hidden");
+
+    initApp();
+
+    showToast("Welcome to PRAGATI UNIVERSITY CANTEEN!");
+}
+
+
+/* =========================================================
+   APP INITIALIZATION
+========================================================= */
+
+function initApp() {
+
+    const student = JSON.parse(localStorage.getItem("puStudent"));
+
+    if (!student) {
+        document.getElementById("loginPage").classList.remove("hidden");
+        document.getElementById("app").classList.add("hidden");
+        return;
+    }
+
+    document.getElementById("welcomeText").textContent =
+        "Welcome, " + student.roll;
+
+    document.getElementById("profileRoll").textContent =
+        student.roll;
+
+    document.getElementById("profileMobile").textContent =
+        student.mobile;
+
+    renderFood();
+    renderWeekly();
+    renderCart();
+    renderOrders();
+    renderAdmin();
+    updateCartCount();
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showPage(page) {
+
+    document.querySelectorAll(".page").forEach(p => {
+        p.classList.remove("active");
+    });
+
+    const target = document.getElementById(page);
+
+    if (target) {
+        target.classList.add("active");
+    }
+
+    if (page === "cart") renderCart();
+
+    if (page === "orders") renderOrders();
+
+    if (page === "status") renderStatus();
+
+    if (page === "admin") renderAdmin();
+
+    if (page === "checkout") renderCheckout();
+
+    if (page === "weekly") renderWeekly();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   FOOD MENU
+========================================================= */
+
+let selectedCategory = "ALL";
+
+function filterCategory(category, element) {
+
+    selectedCategory = category;
+
+    document.querySelectorAll(".category").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    if (element) {
+        element.classList.add("active");
+    }
+
+    renderFood();
+}
+
+function clearSearch() {
+    document.getElementById("searchInput").value = "";
+    renderFood();
+}
+
+function renderFood() {
+
+    const foods = getFoods();
+
+    const search =
+        document.getElementById("searchInput")?.value
+        .toLowerCase()
+        .trim() || "";
+
+    let filtered = foods.filter(food => {
+
+        const matchesSearch =
+            food.name.toLowerCase().includes(search) ||
+            food.desc.toLowerCase().includes(search);
+
+        const matchesCategory =
+            selectedCategory === "ALL" ||
+            food.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+    });
+
+    const morning = filtered.filter(
+        f => f.category === "MORNING TIFFIN"
+    );
+
+    const lunch = filtered.filter(
+        f => f.category === "LUNCH"
+    );
+
+    const snacks = filtered.filter(
+        f =>
+            f.category === "SNACKS" ||
+            f.category === "BEVERAGES"
+    );
+
+    document.getElementById("morningGrid").innerHTML =
+        morning.length
+        ? morning.map(foodCard).join("")
+        : "<p>No food items found.</p>";
+
+    document.getElementById("lunchGrid").innerHTML =
+        lunch.length
+        ? lunch.map(foodCard).join("")
+        : "<p>No food items found.</p>";
+
+    document.getElementById("snacksGrid").innerHTML =
+        snacks.length
+        ? snacks.map(foodCard).join("")
+        : "<p>No food items found.</p>";
+}
+
+function foodCard(food) {
+
+    return `
+        <div class="food-card">
+
+            <div class="food-image">
+                ${food.emoji}
+            </div>
+
+            <h3>${food.name}</h3>
+
+            <p>${food.desc}</p>
+
+            <div style="margin-top:8px;">
+                ${
+                    food.category === "LUNCH" &&
+                    (
+                        food.name.toLowerCase().includes("chicken") ||
+                        food.name.toLowerCase().includes("egg")
+                    )
+                    ? "🔴 Non-Veg"
+                    : "🟢 Veg"
+                }
+            </div>
+
+            <div class="food-bottom">
+
+                <span class="price">
+                    ₹${food.price}
+                </span>
+
+                ${
+                    food.available
+                    ?
+                    `<button class="add-btn"
+                        onclick="addFood(${food.id})">
+                        + Add
+                    </button>`
+                    :
+                    `<span class="out">
+                        OUT OF STOCK
+                    </span>`
+                }
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* =========================================================
+   ADD FOOD
+========================================================= */
+
+function addFood(id) {
+
+    const foods = getFoods();
+    const food = foods.find(f => f.id === id);
+
+    if (!food || !food.available) {
+        showToast("This item is currently unavailable.");
+        return;
+    }
+
+    const cart = getCart();
+
+    const existing = cart.find(
+        item => item.type === "food" && item.id === id
+    );
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({
+            type: "food",
+            id: food.id,
+            name: food.name,
+            price: food.price,
+            emoji: food.emoji,
+            quantity: 1
+        });
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    showToast(food.name + " added to cart!");
+}
+
+
+/* =========================================================
+   CAKE
+========================================================= */
+
+function cakeBasePrice(weight) {
+
+    if (weight == 500) return 350;
+    if (weight == 1000) return 650;
+    if (weight == 1500) return 900;
+    return 1200;
+}
+
+function updateCakePrice() {
+
+    const flavour =
+        document.getElementById("cakeFlavour").value;
+
+    const weight =
+        document.getElementById("cakeWeight").value;
+
+    const theme =
+        document.getElementById("cakeTheme").value;
+
+    const quantity =
+        Math.max(
+            1,
+            Number(document.getElementById("cakeQuantity").value || 1)
+        );
+
+    let price = cakeBasePrice(weight);
+
+    if (flavour === "Red Velvet") price += 100;
+    if (flavour === "Black Forest") price += 50;
+    if (flavour === "Strawberry") price += 50;
+
+    if (theme !== "Simple") price += 50;
+
+    price *= quantity;
+
+    document.getElementById("cakePrice").textContent =
+        "₹" + price;
+
+    document.getElementById("summaryName").textContent =
+        document.getElementById("cakeName").value || "-";
+
+    document.getElementById("summaryFlavour").textContent =
+        flavour;
+
+    document.getElementById("summaryWeight").textContent =
+        weight == 500
+        ? "500 g"
+        : weight == 1000
+        ? "1 kg"
+        : weight == 1500
+        ? "1.5 kg"
+        : "2 kg";
+
+    document.getElementById("summaryOccasion").textContent =
+        document.getElementById("cakeOccasion").value;
+
+    document.getElementById("summaryTheme").textContent =
+        theme;
+
+    document.getElementById("summaryMessage").textContent =
+        document.getElementById("cakeMessage").value || "-";
+
+    const date =
+        document.getElementById("cakeDate").value;
+
+    document.getElementById("summaryDate").textContent =
+        date || "-";
+
+    document.getElementById("summaryTime").textContent =
+        document.getElementById("cakeTime").value || "-";
+}
+
+[
+    "cakeName",
+    "cakeMessage",
+    "cakeDate",
+    "cakeTime",
+    "cakeQuantity",
+    "cakeOccasion"
+].forEach(id => {
+
+    document.addEventListener("input", e => {
+
+        if (e.target.id === id) {
+            updateCakePrice();
+        }
+
+    });
+
+});
+
+
+function addCakeToCart() {
+
+    const name =
+        document.getElementById("cakeName").value.trim();
+
+    const flavour =
+        document.getElementById("cakeFlavour").value;
+
+    const weight =
+        document.getElementById("cakeWeight").value;
+
+    const occasion =
+        document.getElementById("cakeOccasion").value;
+
+    const message =
+        document.getElementById("cakeMessage").value.trim();
+
+    const theme =
+        document.getElementById("cakeTheme").value;
+
+    const date =
+        document.getElementById("cakeDate").value;
+
+    const time =
+        document.getElementById("cakeTime").value;
+
+    const quantity =
+        Number(document.getElementById("cakeQuantity").value);
+
+    if (!name || !message || !date || !time || quantity < 1) {
+
+        showToast(
+            "Please complete all required cake fields."
+        );
+
+        return;
+    }
+
+    const selectedDateTime =
+        new Date(date + "T" + time);
+
+    const minimum =
+        new Date(Date.now() + 2 * 60 * 60 * 1000);
+
+    if (selectedDateTime < minimum) {
+
+        showToast(
+            "Please choose a cake pickup time at least 2 hours in advance."
+        );
+
+        return;
+    }
+
+    let price = cakeBasePrice(weight);
+
+    if (flavour === "Red Velvet") price += 100;
+    if (flavour === "Black Forest") price += 50;
+    if (flavour === "Strawberry") price += 50;
+
+    if (theme !== "Simple") price += 50;
+
+    price *= quantity;
+
+    const cake = {
+
+        type: "cake",
+
+        id: "cake_" + Date.now(),
+
+        name: "Chocolate Cake",
+
+        cakePerson: name,
+
+        flavour,
+        weight,
+        occasion,
+        message,
+        theme,
+        date,
+        time,
+
+        price,
+        quantity
+
+    };
+
+    const cart = getCart();
+
+    cart.push(cake);
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    showToast("Cake added to cart!");
+
+    showPage("cart");
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function updateCartCount() {
+
+    const cart = getCart();
+
+    const count =
+        cart.reduce(
+            (sum, item) => sum + item.quantity,
+            0
+        );
+
+    document.getElementById("cartCount").textContent =
+        count;
+}
+
+function getCartSubtotal() {
+
+    return getCart().reduce(
+        (sum, item) => {
+
+            if (item.type === "food") {
+                return sum + item.price * item.quantity;
+            }
+
+            return sum + item.price;
+
+        },
+        0
+    );
+}
+
+function renderCart() {
+
+    const cart = getCart();
+
+    const container =
+        document.getElementById("cartItems");
+
+    if (!cart.length) {
+
+        container.innerHTML = `
+            <div class="panel" style="text-align:center;">
+                <div style="font-size:60px;">🛒</div>
+                <h2>Your cart is empty.</h2>
+                <p style="color:#666;margin:10px;">
+                    Add food or a cake to continue.
+                </p>
+                <button class="primary-btn"
+                        onclick="showPage('home')">
+                    VIEW MENU
+                </button>
+            </div>
+        `;
+
+        document.getElementById("cartBill").innerHTML = "";
+
+        return;
+    }
+
+    container.innerHTML =
+        cart.map((item,index) => {
+
+            if (item.type === "cake") {
+
+                return `
+                    <div class="cart-item">
+
+                        <div class="cart-row">
+
+                            <div>
+
+                                <h3>🎂 Cake - ${item.flavour}</h3>
+
+                                <p style="color:#666;font-size:13px;margin-top:6px;">
+                                    For: ${item.cakePerson}<br>
+                                    Weight: ${formatWeight(item.weight)}<br>
+                                    Occasion: ${item.occasion}<br>
+                                    Theme: ${item.theme}<br>
+                                    Message: ${item.message}<br>
+                                    Pickup: ${item.date} ${item.time}
+                                </p>
+
+                            </div>
+
+                            <strong style="color:#8b1e3f;">
+                                ₹${item.price}
+                            </strong>
+
+                        </div>
+
+                        <div style="margin-top:10px;">
+                            Quantity: ${item.quantity}
+                        </div>
+
+                        <button class="remove-btn"
+                                style="margin-top:10px;"
+                                onclick="removeCartItem(${index})">
+                            Remove
+                        </button>
+
+                    </div>
+                `;
+
+            }
+
+            return `
+                <div class="cart-item">
+
+                    <div class="cart-row">
+
+                        <div>
+
+                            <h3>
+                                ${item.emoji}
+                                ${item.name}
+                            </h3>
+
+                            <p style="color:#666;">
+                                ₹${item.price} each
+                            </p>
+
+                        </div>
+
+                        <strong>
+                            ₹${item.price * item.quantity}
+                        </strong>
+
+                    </div>
+
+                    <div class="qty">
+
+                        <button onclick="changeQuantity(${index},-1)">
+                            −
+                        </button>
+
+                        <strong>
+                            ${item.quantity}
+                        </strong>
+
+                        <button onclick="changeQuantity(${index},1)">
+                            +
+                        </button>
+
+                        <button class="remove-btn"
+                                onclick="removeCartItem(${index})">
+                            Remove
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+        }).join("");
+
+    const subtotal = getCartSubtotal();
+
+    const service =
+        Math.max(5, Math.round(subtotal * .03));
+
+    const total = subtotal + service;
+
+    document.getElementById("cartBill").innerHTML = `
+
+        <div class="bill">
+
+            <div class="bill-line">
+                <span>SUBTOTAL</span>
+                <strong>₹${subtotal}</strong>
+            </div>
+
+            <div class="bill-line">
+                <span>SERVICE CHARGE</span>
+                <strong>₹${service}</strong>
+            </div>
+
+            <div class="bill-line total">
+                <span>TOTAL BILL</span>
+                <strong>₹${total}</strong>
+            </div>
+
+            <button class="primary-btn"
+                    onclick="goCheckout()">
+                PROCEED TO ORDER
+            </button>
+
+        </div>
+
+    `;
+}
+
+function formatWeight(weight) {
+
+    if (weight == 500) return "500 g";
+    if (weight == 1000) return "1 kg";
+    if (weight == 1500) return "1.5 kg";
+    return "2 kg";
+}
+
+function changeQuantity(index, amount) {
+
+    const cart = getCart();
+
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index,1);
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    renderCart();
+}
+
+function removeCartItem(index) {
+
+    const cart = getCart();
+
+    cart.splice(index,1);
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    renderCart();
+
+    showToast("Item removed.");
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+let selectedPickup = "";
+let selectedPayment = "";
+
+function goCheckout() {
+
+    if (!getCart().length) {
+
+        showToast("Your cart is empty.");
+
+        return;
+    }
+
+    showPage("checkout");
+}
+
+function renderCheckout() {
+
+    const cart = getCart();
+
+    if (!cart.length) return;
+
+    const subtotal = getCartSubtotal();
+
+    const service =
+        Math.max(5, Math.round(subtotal * .03));
+
+    const total = subtotal + service;
+
+    document.getElementById("checkoutItems").innerHTML =
+        cart.map(item => `
+
+            <div class="summary-line">
+
+                <span>
+                    ${
+                        item.type === "cake"
+                        ? "🎂 " + item.flavour + " Cake"
+                        : item.name
+                    }
+                    × ${item.quantity}
+                </span>
+
+                <strong>
+                    ₹${
+                        item.type === "cake"
+                        ? item.price
+                        : item.price * item.quantity
+                    }
+                </strong>
+
+            </div>
+
+        `).join("");
+
+    document.getElementById("checkoutSubtotal").textContent =
+        "₹" + subtotal;
+
+    document.getElementById("checkoutService").textContent =
+        "₹" + service;
+
+    document.getElementById("checkoutTotal").textContent =
+        "₹" + total;
+
+    createPickupSlots();
+
+    document.querySelectorAll(
+        'input[name="payment"]'
+    ).forEach(input => {
+        input.checked = false;
+    });
+
+    selectedPayment = "";
+
+    document.getElementById("paymentDetails").innerHTML = "";
+}
+
+function createPickupSlots() {
+
+    const cart = getCart();
+
+    const hasCake =
+        cart.some(item => item.type === "cake");
+
+    if (hasCake) {
+
+        const cake =
+            cart.find(item => item.type === "cake");
+
+        selectedPickup =
+            cake.date + " " + cake.time;
+
+        document.getElementById("pickupSlots").innerHTML = `
+            <div class="payment-option selected">
+                🎂 Cake Pickup<br>
+                <strong>
+                    ${cake.date} at ${cake.time}
+                </strong>
+            </div>
+        `;
+
+        return;
+    }
+
+    const slots = [
+        "12:30 PM",
+        "12:40 PM",
+        "12:50 PM",
+        "1:00 PM",
+        "1:10 PM",
+        "1:20 PM",
+        "4:00 PM",
+        "4:15 PM",
+        "4:30 PM",
+        "4:45 PM",
+        "5:00 PM"
+    ];
+
+    document.getElementById("pickupSlots").innerHTML =
+        slots.map((slot,index) => `
+
+            <button
+                class="payment-option"
+                id="slot${index}"
+                onclick="choosePickup('${slot}',${index})"
+                style="width:100%;text-align:left;background:white;">
+
+                🕐 ${slot}
+
+            </button>
+
+        `).join("");
+
+    selectedPickup = "";
+}
+
+function choosePickup(slot,index) {
+
+    selectedPickup = slot;
+
+    document.querySelectorAll("#pickupSlots .payment-option")
+        .forEach(x => x.classList.remove("selected"));
+
+    document.getElementById("slot" + index)
+        .classList.add("selected");
+}
+
+function selectPayment(payment) {
+
+    selectedPayment = payment;
+
+    document.querySelectorAll(".payment-option")
+        .forEach(option => {
+            option.classList.remove("selected");
+        });
+
+    if (payment === "Online Payment") {
+
+        document.getElementById("onlineOption")
+            .classList.add("selected");
+
+        showDemoPayment();
+
+    } else {
+
+        document.getElementById("cashOption")
+            .classList.add("selected");
+
+        showCashPayment();
+
+    }
+}
+
+function showDemoPayment() {
+
+    const total =
+        getCartSubtotal() +
+        Math.max(5, Math.round(getCartSubtotal() * .03));
+
+    document.getElementById("paymentDetails").innerHTML = `
+
+        <div class="panel" style="margin-top:15px;background:#fff7ed;">
+
+            <h3>ONLINE PAYMENT</h3>
+
+            <p style="margin:8px 0;color:#666;">
+                DEMO PAYMENT ONLY
+            </p>
+
+            <h2 style="color:#8b1e3f;">
+                ₹${total}
+            </h2>
+
+            <div style="margin-top:15px;">
+
+                <label class="payment-option">
+                    <input type="radio" name="demoType" checked>
+                    UPI
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="demoType">
+                    CARD
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="demoType">
+                    NET BANKING
+                </label>
+
+            </div>
+
+            <input class="form-control"
+                   style="margin-top:10px;"
+                   placeholder="Demo UPI ID / Card / Bank">
+
+            <p style="font-size:12px;color:#777;margin-top:8px;">
+                Do not enter real banking information.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="processDemoPayment()">
+                PAY NOW
+            </button>
+
+        </div>
+    `;
+}
+
+function showCashPayment() {
+
+    const total =
+        getCartSubtotal() +
+        Math.max(5, Math.round(getCartSubtotal() * .03));
+
+    document.getElementById("paymentDetails").innerHTML = `
+
+        <div class="panel"
+             style="margin-top:15px;background:#f0fdf4;">
+
+            <h3>💵 CASH ON PICKUP</h3>
+
+            <p style="margin-top:10px;">
+                Pay <strong>₹${total}</strong> at the canteen
+                when collecting your order.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="confirmOrder()">
+                CONFIRM ORDER
+            </button>
+
+        </div>
+
+    `;
+}
+
+function processDemoPayment() {
+
+    if (!selectedPickup) {
+
+        showToast("Please select a pickup time.");
+
+        return;
+    }
+
+    const box =
+        document.getElementById("paymentDetails");
+
+    box.innerHTML = `
+        <div class="panel" style="margin-top:15px;text-align:center;">
+            <div style="font-size:45px;">⏳</div>
+            <h3>Processing Demo Payment...</h3>
+            <p style="color:#666;margin-top:8px;">
+                Please wait.
+            </p>
+        </div>
+    `;
+
+    setTimeout(() => {
+
+        box.innerHTML = `
+            <div class="panel"
+                 style="margin-top:15px;text-align:center;background:#f0fdf4;">
+
+                <div style="font-size:50px;">✓</div>
+
+                <h3 class="success">
+                    PAYMENT SUCCESSFUL
+                </h3>
+
+                <p style="margin-top:8px;">
+                    Demo payment completed.
+                </p>
+
+            </div>
+        `;
+
+        setTimeout(() => {
+
+            confirmOrder();
+
+        },1000);
+
+    },1200);
+}
+
+
+/* =========================================================
+   ORDER CREATION
+========================================================= */
+
+function confirmOrder() {
+
+    if (!selectedPayment) {
+
+        showToast("Please select a payment method.");
+
+        return;
+    }
+
+    if (!selectedPickup) {
+
+        showToast("Please select a pickup time.");
+
+        return;
+    }
+
+    const cart = getCart();
+
+    if (!cart.length) {
+
+        showToast("Your cart is empty.");
+
+        return;
+    }
+
+    let counter =
+        Number(localStorage.getItem("puTokenCounter") || 100);
+
+    counter++;
+
+    localStorage.setItem(
+        "puTokenCounter",
+        counter
+    );
+
+    const token = "A" + counter;
+
+    const subtotal = getCartSubtotal();
+
+    const service =
+        Math.max(5, Math.round(subtotal * .03));
+
+    const total = subtotal + service;
+
+    const student =
+        JSON.parse(localStorage.getItem("puStudent"));
+
+    const order = {
+
+        id: Date.now(),
+
+        token,
+
+        roll: student.roll,
+
+        mobile: student.mobile,
+
+        items: cart,
+
+        subtotal,
+
+        service,
+
+        total,
+
+        payment: selectedPayment,
+
+        pickup: selectedPickup,
+
+        status: "Order Received",
+
+        date: new Date().toLocaleDateString(),
+
+        hasCake: cart.some(
+            item => item.type === "cake"
+        )
+
+    };
+
+    const orders = getOrders();
+
+    orders.unshift(order);
+
+    saveOrders(orders);
+
+    localStorage.removeItem("puCart");
+
+    updateCartCount();
+
+    document.getElementById("tokenDisplay").textContent =
+        "#" + token;
+
+    document.getElementById("confirmPickup").textContent =
+        selectedPickup;
+
+    document.getElementById("confirmTotal").textContent =
+        "₹" + total;
+
+    document.getElementById("confirmPayment").textContent =
+        selectedPayment;
+
+    document.getElementById("cakeIncluded")
+        .classList.toggle(
+            "hidden",
+            !order.hasCake
+        );
+
+    localStorage.setItem(
+        "puCurrentOrder",
+        String(order.id)
+    );
+
+    showPage("confirmation");
+
+    showToast("Order confirmed!");
+}
+
+
+/* =========================================================
+   ORDER STATUS
+========================================================= */
+
+function getCurrentOrder() {
+
+    const id =
+        Number(localStorage.getItem("puCurrentOrder"));
+
+    return getOrders().find(
+        order => order.id === id
+    );
+}
+
+function renderStatus() {
+
+    const order = getCurrentOrder();
+
+    if (!order) {
+
+        document.getElementById("statusTimeline").innerHTML =
+            "<p>No active order found.</p>";
+
+        return;
+    }
+
+    document.getElementById("statusToken").textContent =
+        "#" + order.token;
+
+    document.getElementById("statusPickup").textContent =
+        order.pickup;
+
+    const cake = order.hasCake;
+
+    const statuses = cake
+        ? [
+            "Order Received",
+            "Cake Being Prepared",
+            "Ready for Pickup",
+            "Collected"
+        ]
+        : [
+            "Order Received",
+            "Preparing",
+            "Ready for Pickup",
+            "Collected"
+        ];
+
+    const currentIndex =
+        statuses.indexOf(order.status);
+
+    document.getElementById("statusTimeline").innerHTML =
+        statuses.map((status,index) => {
+
+            let cls = "pending";
+            let icon = "○";
+
+            if (index < currentIndex) {
+                cls = "completed";
+                icon = "✓";
+            }
+
+            if (index === currentIndex) {
+                cls = "current";
+                icon = "●";
+            }
+
+            return `
+                <div class="status-step ${cls}">
+                    <strong>${icon}</strong>
+                    <span>${status.toUpperCase()}</span>
+                </div>
+            `;
+
+        }).join("");
+
+    const ready =
+        order.status === "Ready for Pickup";
+
+    document.getElementById("readyMessage")
+        .classList.toggle(
+            "hidden",
+            !ready
+        );
+
+    const controls =
+        document.getElementById("demoControls");
+
+    if (order.status === "Order Received") {
+
+        controls.innerHTML = `
+            <button class="primary-btn"
+                    onclick="changeOrderStatus('Preparing')">
+                DEMO: MARK AS PREPARING
+            </button>
+        `;
+
+    } else if (
+        order.status === "Preparing" ||
+        order.status === "Cake Being Prepared"
+    ) {
+
+        controls.innerHTML = `
+            <button class="primary-btn"
+                    onclick="changeOrderStatus('Ready for Pickup')">
+                DEMO: MARK AS READY
+            </button>
+        `;
+
+    } else if (order.status === "Ready for Pickup") {
+
+        controls.innerHTML = `
+            <button class="primary-btn"
+                    onclick="changeOrderStatus('Collected')">
+                DEMO: MARK AS COLLECTED
+            </button>
+        `;
+
+    } else {
+
+        controls.innerHTML = `
+            <div class="success"
+                 style="text-align:center;margin-top:20px;">
+                ✓ ORDER COLLECTED
+            </div>
+        `;
+    }
+}
+
+function changeOrderStatus(status) {
+
+    const orders = getOrders();
+
+    const current =
+        getCurrentOrder();
+
+    if (!current) return;
+
+    current.status = status;
+
+    saveOrders(orders);
+
+    renderStatus();
+
+    renderOrders();
+
+    renderAdmin();
+
+    if (status === "Ready for Pickup") {
+
+        showToast(
+            "🔔 YOUR ORDER IS READY!"
+        );
+    }
+}
+
+
+/* =========================================================
+   MY ORDERS
+========================================================= */
+
+function renderOrders() {
+
+    const student =
+        JSON.parse(localStorage.getItem("puStudent"));
+
+    const orders =
+        getOrders().filter(
+            order => order.roll === student?.roll
+        );
+
+    const container =
+        document.getElementById("ordersList");
+
+    if (!orders.length) {
+
+        container.innerHTML = `
+            <div class="panel" style="text-align:center;">
+                <div style="font-size:55px;">🧾</div>
+                <h2>No orders yet.</h2>
+                <button class="primary-btn"
+                        onclick="showPage('home')">
+                    START ORDERING
+                </button>
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML =
+        orders.map(order => `
+
+            <div class="order-card">
+
+                <div class="cart-row">
+
+                    <div>
+
+                        <h3>
+                            #${order.token}
+                        </h3>
+
+                        <p style="color:#666;margin-top:6px;">
+                            ${order.date}
+                        </p>
+
+                    </div>
+
+                    <span class="status-badge">
+                        ${order.status}
+                    </span>
+
+                </div>
+
+                <div style="margin-top:12px;">
+
+                    ${order.items.map(item => `
+                        <div>
+                            ${
+                                item.type === "cake"
+                                ? "🎂 " + item.flavour + " Cake"
+                                : item.name
+                            }
+                            × ${item.quantity}
+                        </div>
+                    `).join("")}
+
+                </div>
+
+                <div class="cart-row"
+                     style="margin-top:12px;">
+
+                    <strong>
+                        Total: ₹${order.total}
+                    </strong>
+
+                    <button class="secondary-btn"
+                            onclick="openOrder(${order.id})">
+                        TRACK
+                    </button>
+
+                </div>
+
+            </div>
+
+        `).join("");
+}
+
+function openOrder(id) {
+
+    localStorage.setItem(
+        "puCurrentOrder",
+        String(id)
+    );
+
+    showPage("status");
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+function editProfile() {
+
+    const student =
+        JSON.parse(localStorage.getItem("puStudent"));
+
+    const newRoll =
+        prompt(
+            "Enter Roll Number:",
+            student.roll
+        );
+
+    if (!newRoll) return;
+
+    const newMobile =
+        prompt(
+            "Enter 10-digit Mobile Number:",
+            student.mobile
+        );
+
+    if (!/^[6-9]\d{9}$/.test(newMobile)) {
+
+        showToast(
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        return;
+    }
+
+    localStorage.setItem(
+        "puStudent",
+        JSON.stringify({
+            roll: newRoll.trim(),
+            mobile: newMobile.trim()
+        })
+    );
+
+    initApp();
+
+    showToast("Profile updated.");
+}
+
+function logout() {
+
+    localStorage.removeItem("puStudent");
+
+    document.getElementById("app")
+        .classList.add("hidden");
+
+    document.getElementById("loginPage")
+        .classList.remove("hidden");
+
+    showToast("Logged out.");
+}
+
+
+/* =========================================================
+   WEEKLY MENU
+========================================================= */
+
+const weeklyData = {
+
+    Monday: {
+
+        morning: [
+            "Idly",
+            "Vada",
+            "Masala Dosa"
+        ],
+
+        lunch: [
+            "Veg Meals",
+            "Chicken Biryani",
+            "Curd Rice"
+        ],
+
+        snacks: [
+            "Samosa",
+            "Veg Puff",
+            "Kurkure",
+            "Tea"
+        ]
+
+    },
+
+    Tuesday: {
+
+        morning: [
+            "Poori",
+            "Pongal",
+            "Vada"
+        ],
+
+        lunch: [
+            "Veg Biryani",
+            "Chicken Fried Rice",
+            "Special Meals"
+        ],
+
+        snacks: [
+            "Mirchi Bajji",
+            "Chips",
+            "Kurkure",
+            "Coffee"
+        ]
+
+    },
+
+    Wednesday: {
+
+        morning: [
+            "Upma",
+            "Plain Dosa",
+            "Idly Vada Combo"
+        ],
+
+        lunch: [
+            "Chicken Curry Rice",
+            "Lemon Rice",
+            "Veg Meals"
+        ],
+
+        snacks: [
+            "Egg Puff",
+            "Cookies",
+            "Soft Drinks",
+            "Coffee"
+        ]
+
+    },
+
+    Thursday: {
+
+        morning: [
+            "Pongal",
+            "Masala Dosa",
+            "Chapati"
+        ],
+
+        lunch: [
+            "Chicken Biryani",
+            "Veg Fried Rice",
+            "Curd Rice"
+        ],
+
+        snacks: [
+            "Samosa",
+            "Mirchi Bajji",
+            "Kurkure",
+            "Fresh Juice"
+        ]
+
+    },
+
+    Friday: {
+
+        morning: [
+            "Idly",
+            "Poori",
+            "Plain Dosa"
+        ],
+
+        lunch: [
+            "Special Meals",
+            "Egg Fried Rice",
+            "Tomato Rice"
+        ],
+
+        snacks: [
+            "Chicken Puff",
+            "Chips",
+            "Chocolate",
+            "Tea"
+        ]
+
+    },
+
+    Saturday: {
+
+        morning: [
+            "Vada",
+            "Upma",
+            "Masala Dosa"
+        ],
+
+        lunch: [
+            "Veg Biryani",
+            "Chicken Fried Rice",
+            "Sambar Rice"
+        ],
+
+        snacks: [
+            "Veg Puff",
+            "Biscuits",
+            "Kurkure",
+            "Soft Drinks"
+        ]
+
+    },
+
+    Sunday: {
+
+        morning: [
+            "Poori",
+            "Pongal",
+            "Coffee"
+        ],
+
+        lunch: [
+            "Chicken Biryani",
+            "Special Meals",
+            "Curd Rice"
+        ],
+
+        snacks: [
+            "Samosa",
+            "Cookies",
+            "Fresh Juice",
+            "Kurkure"
+        ]
+
+    }
+
+};
+
+function renderWeekly() {
+
+    const today =
+        new Date().toLocaleDateString(
+            "en-US",
+            { weekday: "long" }
+        );
+
+    document.getElementById("weeklyMenu").innerHTML =
+        Object.entries(weeklyData).map(
+            ([day,data]) => `
+
+                <div class="day-card ${
+                    day === today ? "today" : ""
+                }">
+
+                    <h3>
+                        ${day.toUpperCase()}
+                        ${
+                            day === today
+                            ? " ⭐ TODAY"
+                            : ""
+                        }
+                    </h3>
+
+                    <div class="day-section">
+
+                        <strong>
+                            🌅 Morning Tiffin
+                        </strong>
+
+                        ${data.morning.map(
+                            x => `<span>${x}</span>`
+                        ).join("")}
+
+                    </div>
+
+                    <div class="day-section">
+
+                        <strong>
+                            ☀️ Afternoon Lunch
+                        </strong>
+
+                        ${data.lunch.map(
+                            x => `<span>${x}</span>`
+                        ).join("")}
+
+                    </div>
+
+                    <div class="day-section">
+
+                        <strong>
+                            🍿 Snacks & Beverages
+                        </strong>
+
+                        ${data.snacks.map(
+                            x => `<span>${x}</span>`
+                        ).join("")}
+
+                    </div>
+
+                </div>
+            `
+        ).join("");
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+function renderAdmin() {
+
+    const orders = getOrders();
+
+    const sales =
+        orders.reduce(
+            (sum, order) => sum + order.total,
+            0
+        );
+
+    const pending =
+        orders.filter(
+            order =>
+                order.status === "Order Received" ||
+                order.status === "Preparing" ||
+                order.status === "Cake Being Prepared"
+        ).length;
+
+    const ready =
+        orders.filter(
+            order =>
+                order.status === "Ready for Pickup"
+        ).length;
+
+    document.getElementById("statOrders").textContent =
+        orders.length;
+
+    document.getElementById("statSales").textContent =
+        "₹" + sales;
+
+    document.getElementById("statPending").textContent =
+        pending;
+
+    document.getElementById("statReady").textContent =
+        ready;
+
+    document.getElementById("adminOrders").innerHTML =
+        orders.map(order => `
+
+            <tr>
+
+                <td>
+                    <strong>#${order.token}</strong>
+                </td>
+
+                <td>
+                    ${order.roll}
+                </td>
+
+                <td>
+                    ${order.items.map(item =>
+                        `${
+                            item.type === "cake"
+                            ? "Cake"
+                            : item.name
+                        } × ${item.quantity}`
+                    ).join("<br>")}
+                </td>
+
+                <td>
+                    ₹${order.total}
+                </td>
+
+                <td>
+                    ${order.status}
+                </td>
+
+                <td>
+
+                    <div class="admin-actions">
+
+                        <button class="small-btn"
+                                onclick="adminStatus(${order.id},'Preparing')">
+                            PREPARING
+                        </button>
+
+                        <button class="small-btn"
+                                onclick="adminStatus(${order.id},'Ready for Pickup')">
+                            READY
+                        </button>
+
+                        <button class="small-btn"
+                                onclick="adminStatus(${order.id},'Collected')">
+                            COLLECTED
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+    renderAdminMenu();
+}
+
+function adminStatus(id,status) {
+
+    const orders = getOrders();
+
+    const order =
+        orders.find(o => o.id === id);
+
+    if (!order) return;
+
+    order.status = status;
+
+    saveOrders(orders);
+
+    renderAdmin();
+
+    renderOrders();
+
+    const current =
+        getCurrentOrder();
+
+    if (current && current.id === id) {
+        renderStatus();
+    }
+
+    showToast(
+        "#" + order.token +
+        " updated to " + status
+    );
+}
+
+function renderAdminMenu() {
+
+    const foods = getFoods();
+
+    document.getElementById("adminMenu").innerHTML =
+        foods.map(food => `
+
+            <tr>
+
+                <td>
+                    ${food.emoji} ${food.name}
+                </td>
+
+                <td>
+                    ${food.category}
+                </td>
+
+                <td>
+                    ₹${food.price}
+                </td>
+
+                <td>
+                    ${
+                        food.available
+                        ? "🟢 AVAILABLE"
+                        : "🔴 OUT OF STOCK"
+                    }
+                </td>
+
+                <td>
+
+                    <div class="admin-actions">
+
+                        <button class="small-btn"
+                                onclick="toggleAvailability(${food.id})">
+                            ${
+                                food.available
+                                ? "OUT OF STOCK"
+                                : "AVAILABLE"
+                            }
+                        </button>
+
+                        <button class="small-btn"
+                                onclick="editFood(${food.id})">
+                            EDIT
+                        </button>
+
+                        <button class="small-btn"
+                                onclick="deleteFood(${food.id})">
+                            DELETE
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+}
+
+function adminAddItem() {
+
+    const name =
+        document.getElementById("adminFoodName")
+            .value.trim();
+
+    const price =
+        Number(
+            document.getElementById("adminFoodPrice")
+                .value
+        );
+
+    const category =
+        document.getElementById("adminFoodCategory")
+            .value;
+
+    if (!name || !price) {
+
+        showToast(
+            "Please enter food name and price."
+        );
+
+        return;
+    }
+
+    const foods = getFoods();
+
+    foods.push({
+
+        id: Date.now(),
+
+        name,
+
+        category,
+
+        price,
+
+        emoji: "🍽️",
+
+        desc: "PRAGATI UNIVERSITY CANTEEN item",
+
+        available: true
+
+    });
+
+    saveFoods(foods);
+
+    document.getElementById("adminFoodName").value = "";
+    document.getElementById("adminFoodPrice").value = "";
+
+    renderFood();
+    renderAdmin();
+
+    showToast("Food item added.");
+}
+
+function toggleAvailability(id) {
+
+    const foods = getFoods();
+
+    const food =
+        foods.find(f => f.id === id);
+
+    if (!food) return;
+
+    food.available = !food.available;
+
+    saveFoods(foods);
+
+    renderFood();
+    renderAdmin();
+
+    showToast(
+        food.name +
+        (
+            food.available
+            ? " is now available."
+            : " is now out of stock."
+        )
+    );
+}
+
+function editFood(id) {
+
+    const foods = getFoods();
+
+    const food =
+        foods.find(f => f.id === id);
+
+    if (!food) return;
+
+    const newName =
+        prompt(
+            "Food Name:",
+            food.name
+        );
+
+    if (!newName) return;
+
+    const newPrice =
+        Number(
+            prompt(
+                "Price:",
+                food.price
+            )
+        );
+
+    if (!newPrice) return;
+
+    food.name = newName;
+    food.price = newPrice;
+
+    saveFoods(foods);
+
+    renderFood();
+    renderAdmin();
+
+    showToast("Food item updated.");
+}
+
+function deleteFood(id) {
+
+    if (!confirm(
+        "Delete this food item?"
+    )) {
+        return;
+    }
+
+    let foods = getFoods();
+
+    foods =
+        foods.filter(
+            f => f.id !== id
+        );
+
+    saveFoods(foods);
+
+    renderFood();
+    renderAdmin();
+
+    showToast("Food item deleted.");
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.remove("hidden");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(() => {
+
+            toast.classList.add("hidden");
+
+        },2500);
+}
+
+
+/* =========================================================
+   STARTUP
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const student =
+            localStorage.getItem("puStudent");
+
+        if (student) {
+
+            document.getElementById("loginPage")
+                .classList.add("hidden");
+
+            document.getElementById("app")
+                .classList.remove("hidden");
+
+            initApp();
+
+        }
+
+        updateCakePrice();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
